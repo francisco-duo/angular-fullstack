@@ -1,0 +1,39 @@
+<div class="container bg-warning">
+    <h1>Veja o que estão compartilhando</h1>
+
+    <div class="container mt-5">
+        <form>
+            <div class="row">
+                <div class="col-6">
+                    <input class="form-control" type="text" placeholder="Busque por um momento..."
+                        (input)="search($event)"
+                    >
+                </div>
+                <div class="col-4">
+                    <fa-icon [icon]="faSearch"></fa-icon>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-3 mt-4" *ngFor="let moment of moments">
+            <div class="card mb-3" style="width: 18rem;">
+                <img src="{{ baseApiUrl }}uploads/{{ moment.image }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{ moment.title }}
+                    </h5>
+                    <p class="card-text">
+                        {{ moment.description }}
+                    </p>
+                    <a routerLink="moments/{{ moment.id }}" class="btn btn-success">Details</a>
+                    <p>
+                        {{ moment.created_at }}
+                    </p>
+                    <p>Comentários: {{ moment.comments!.length }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
